@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Update {% endblock title %}
+{% block body %}
+
+<div class="container my-3">
+    <h2>Update ToDo</h2>
+    <form action="/update_submit" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="update_sno" value="{{updateToDo.sno}}">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="update_title" value="{{updateToDo.title}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="update_description" value="{{updateToDo.description}}" required>
+        </div>
+        <button type="submit" class="btn btn-dark">Update</button>
+    </form>
+</div>
+
+{% endblock body %}
